@@ -1,0 +1,37 @@
+#install the necessary packages
+# install.packages("ROAuth")
+# install.packages("twitteR")
+# install.packages("wordcloud")
+# install.packages("tm")
+
+
+library("ROAuth")
+library("twitteR")
+library("wordcloud")
+library("tm")
+# library("wordcloud")
+
+# paramètres de connexion
+consumer_key <- "CNFfpzTFE0fYQckqqfeIY5teb"
+consumer_secret <- "ZRZA9EATwRjqYlA2RAo8d8ZZsIfGK7QLvt3shTQJlgTmEB1IcH"
+access_token <- "3153528231-MPEPE576zqWWmGC3i39ESzNStxcIts4mJAMEB5O"
+access_secret <- "e7MpxSsCMcH9pRhPNhRGOpRDq3qALtxddteU39amyRRzZ"
+twitteR::setup_twitter_oauth(consumer_key,
+                    consumer_secret,
+                    access_token,
+                    access_secret)
+# Scraping 
+  r_stats <- searchTwitter("terrasse", n=10,lang='fr')
+
+# mise en forme du dataframe
+r_stats_text <- sapply(r_stats, function(x) x$getText())
+r_stats_name <- sapply(r_stats, function(x) x$getScreenName())
+r_stats_date <- sapply(r_stats, function(x) x$getCreated())
+r_stats_lat <- sapply(r_stats, function(x) x$getLatitude())
+r_stats_lon <- sapply(r_stats, function(x) x$getLongitude())
+
+r_stats_lat <- as.vector(r_stats_lat)
+r_stats_lon <- as.vector(r_stats_lon)
+
+r_stats_tot <- cbind(r_stats_name,r_stats_date,r_stats_lat,r_stats_lon,r_stats_text)
+r_stats_tot=as.data.frame(r_stats_tot)
