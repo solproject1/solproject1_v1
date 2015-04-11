@@ -12,10 +12,10 @@ library("tm")
 # library("wordcloud")
 
 # paramètres de connexion
-consumer_key <- "CNFfpzTFE0fYQckqqfeIY5teb"
-consumer_secret <- "ZRZA9EATwRjqYlA2RAo8d8ZZsIfGK7QLvt3shTQJlgTmEB1IcH"
-access_token <- "3153528231-MPEPE576zqWWmGC3i39ESzNStxcIts4mJAMEB5O"
-access_secret <- "e7MpxSsCMcH9pRhPNhRGOpRDq3qALtxddteU39amyRRzZ"
+consumer_key <- "xxx"
+consumer_secret <- "xxx"
+access_token <- "xxx"
+access_secret <- "xxx"
 twitteR::setup_twitter_oauth(consumer_key,
                     consumer_secret,
                     access_token,
